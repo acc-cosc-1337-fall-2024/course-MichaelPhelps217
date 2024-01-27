@@ -18,4 +18,4 @@ TEST_CASE("Verify multiply_numbers function")
 }
 
 // to see more info in the terminal type "-s" at the end.
-// example: @MichaelPhelps217 ➜ .../build/test/homework/01_data_types (master) $ /workspaces/course-MichaelPhelps217/build/test/homework/01_data_types/hw_01_tests *s
+// example: @MichaelPhelps217 ➜ .../build/test/homework/01_data_types (master) $ /workspaces/course-MichaelPhelps217/build/test/homework/01_data_types/hw_01_tests -s
