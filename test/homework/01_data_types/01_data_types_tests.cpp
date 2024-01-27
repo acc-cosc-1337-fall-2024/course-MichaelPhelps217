@@ -11,3 +11,11 @@ TEST_CASE("Verify sum_numbers function")
 	REQUIRE(add_numbers(10, 10) == 20);
 }
 
+TEST_CASE("Verify multiply_numbers function") 
+{
+	REQUIRE(multiply_numbers(10) == 50);
+	REQUIRE(multiply_numbers(2) == 10);
+}
+
+// to see more info in the terminal type "-s" at the end.
+// example: @MichaelPhelps217 ➜ .../build/test/homework/01_data_types (master) $ /workspaces/course-MichaelPhelps217/build/test/homework/01_data_types/hw_01_tests *s
