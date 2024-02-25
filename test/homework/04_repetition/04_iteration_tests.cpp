@@ -8,10 +8,11 @@ TEST_CASE("Verify Test Configuration", "verification") {
 
 TEST_CASE("Verify repetition code") {
 	REQUIRE(factorial(5) == 120);
-	REQUIRE(factorial(4) == 24);
+	REQUIRE(factorial(6) == 720);
 	REQUIRE(factorial(3) == 6);
 
 	REQUIRE(gcd(15, 5) == 5);
-	REQUIRE(gcd(5, 15) == 5);
+	REQUIRE(gcd(21, 28) == 7);
+	REQUIRE(gcd(25, 100) == 25);
 }
 

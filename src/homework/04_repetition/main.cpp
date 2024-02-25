@@ -89,7 +89,7 @@ int main()
 				}
 			}
 			cin.clear();
-			cin.ignore(999, '\n');
+//			cin.ignore(999, '\n');
 		}
 		else
 		{
