@@ -7,6 +7,3 @@ std::string get_letter_grade_using_switch(int grade);
 std::string prompt_user();
 void run_option_menu();
 bool validate_menu_option(int num);
-
-
-
