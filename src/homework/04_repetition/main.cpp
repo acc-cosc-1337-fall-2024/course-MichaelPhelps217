@@ -49,7 +49,7 @@ int main()
 			if(option == 3)
 			{
 				std::string response = "no";
-				cout<<"Are you sure you want to exit (yes/no)? ";
+				cout<<"Are you sure you want to exit (type yes or no)? ";
 				cin>>response;
 				if(response == "yes")
 				{
@@ -85,11 +85,10 @@ int main()
 				}
 				if(fail)
 				{
-					cout<<"\n\n ***** Invalid Input *****"<<"\n\n";
+					cout<<"\n ***** Invalid Input *****"<<"\n\n";
 				}
 			}
 			cin.clear();
-//			cin.ignore(999, '\n');
 		}
 		else
 		{
