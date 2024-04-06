@@ -21,8 +21,8 @@ int main()
 			game.mark_board(position);
 			game.display_board();
 		}
-
-		std::cout<<"Play Again (y or n)? ";
+		std::cout<<"The winner is: "<<game.get_winner()<<"\n";
+		std::cout<<"\nPlay Again (y or n)? ";
 		std::cin>>user_choice;
 
 	}while(user_choice == 'y' || user_choice == 'Y');
