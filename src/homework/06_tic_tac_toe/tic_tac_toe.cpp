@@ -1,6 +1,7 @@
 //cpp
 #include "tic_tac_toe.h"
 
+//public
 bool TicTacToe::game_over()
 {
     if(check_row_win() || check_column_win() || check_diagonal_win())
@@ -48,6 +49,20 @@ void TicTacToe::display_board() const
 std::string TicTacToe::get_winner()
 {
     return winner;
+}
+
+//This is new.
+void TicTacToeManager::save_game(TicTacToe b)
+{
+    games.push_back(b);
+    update_winner_count(b.get_winner());
+}
+
+void TicTacToeManager::get_winner_total(int& x, int& o, int& t)
+{
+    o = o_win;
+    x = x_win;
+    t = ties;
 }
 
 //private
@@ -121,4 +136,21 @@ bool TicTacToe::check_diagonal_win()
 void TicTacToe::set_winner(std::string winner)
 {
     this->winner = winner;
+}
+
+//This is new.
+void TicTacToeManager::update_winner_count(std::string winner)
+{
+    if(winner == "X")
+    {
+        x_win++;
+    }
+    else if(winner == "O")
+    {
+        o_win++;
+    }
+    else if(winner == "C")
+    {
+        ties++;
+    }
 }
