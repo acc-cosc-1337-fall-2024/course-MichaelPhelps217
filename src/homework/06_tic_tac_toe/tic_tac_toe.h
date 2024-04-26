@@ -2,6 +2,7 @@
 #include "iostream"
 #include "string"
 #include "vector"
+#include <memory>
 #ifndef TIC_TAC_TOE_H
 #define TIC_TAC_TOE_H
 
@@ -14,29 +15,30 @@ public:
     std::string get_player() const{return player;}
     void display_board() const;
     std::string get_winner();
+    TicTacToe(){};
+    TicTacToe(int);
 private:
     std::string player;
-    std::vector<std::string> pegs{9, " "};
     void clear_board();
     void set_next_player();
     bool check_board_full();
-    
+    void set_winner(std::string);
+    std::string winner;
+protected:
+    std::vector<std::string> pegs;
     bool check_column_win();
     bool check_row_win();
     bool check_diagonal_win();
-
-    void set_winner(std::string);
-    std::string winner;
-
 };
 
 class TicTacToeManager
 {
 public:
-    void save_game(TicTacToe b);
+    void save_game(std::unique_ptr<TicTacToe> &b);
     void get_winner_total(int& x, int& o, int& t);
+    TicTacToe get_last_game();
 private:
-    std::vector<TicTacToe> games;
+    std::vector<std::unique_ptr<TicTacToe>> games;
     int x_win = 0;
     int o_win = 0;
     int ties = 0;

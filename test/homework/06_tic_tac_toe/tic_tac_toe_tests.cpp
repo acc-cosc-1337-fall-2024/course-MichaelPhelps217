@@ -1,5 +1,6 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
+#include <memory>
 #include "tic_tac_toe.h"
 
 TEST_CASE("Verify Test Configuration", "verification") {
@@ -190,63 +191,63 @@ TEST_CASE("Test win diagonally from top right") {
 }
 
 TEST_CASE("Test TicTacToeManager tally count") {
-	TicTacToe game;
+	std::unique_ptr<TicTacToe> game = std::make_unique<TicTacToe>();
 	TicTacToeManager games;
 	int x_wins, o_wins, ties;
 
-	game.start_game("X");
-	game.mark_board(3);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(2);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(5);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(1);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(7);
+	game->start_game("X");
+	game->mark_board(3);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(2);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(5);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(1);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(7);
 
-	REQUIRE(game.game_over() == true);
-	REQUIRE(game.get_winner() == "X");
+	REQUIRE(game->game_over() == true);
+	REQUIRE(game->get_winner() == "X");
 	games.save_game(game);
 
 
-	game.start_game("O");
-	game.mark_board(3);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(2);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(5);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(1);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(7);
+	game->start_game("O");
+	game->mark_board(3);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(2);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(5);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(1);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(7);
 
-	REQUIRE(game.game_over() == true);
-	REQUIRE(game.get_winner() == "O");
+	REQUIRE(game->game_over() == true);
+	REQUIRE(game->get_winner() == "O");
 	games.save_game(game);
 
 
-	game.start_game("X");
-	game.mark_board(1);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(2);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(3);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(4);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(6);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(5);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(8);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(9);
-	REQUIRE(game.game_over() == false);
-	game.mark_board(7);
+	game->start_game("X");
+	game->mark_board(1);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(2);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(3);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(4);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(6);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(5);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(8);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(9);
+	REQUIRE(game->game_over() == false);
+	game->mark_board(7);
 
-	REQUIRE(game.game_over() == true);
-	REQUIRE(game.get_winner() == "C");
+	REQUIRE(game->game_over() == true);
+	REQUIRE(game->get_winner() == "C");
 	games.save_game(game);
 
 	games.get_winner_total(x_wins, o_wins, ties);

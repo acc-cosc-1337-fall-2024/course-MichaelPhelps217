@@ -1,5 +1,6 @@
 //cpp
 #include "tic_tac_toe.h"
+#include <memory>
 
 //public
 bool TicTacToe::game_over()
@@ -51,11 +52,15 @@ std::string TicTacToe::get_winner()
     return winner;
 }
 
-//This is new.
-void TicTacToeManager::save_game(TicTacToe b)
+void TicTacToeManager::save_game(std::unique_ptr<TicTacToe>& b)
 {
-    games.push_back(b);
-    update_winner_count(b.get_winner());
+    update_winner_count(b->get_winner());
+    games.push_back(std::move(b));
+}
+
+TicTacToe TicTacToeManager::get_last_game()
+{
+    return *games[games.size()-1];
 }
 
 void TicTacToeManager::get_winner_total(int& x, int& o, int& t)
@@ -63,6 +68,12 @@ void TicTacToeManager::get_winner_total(int& x, int& o, int& t)
     o = o_win;
     x = x_win;
     t = ties;
+}
+
+TicTacToe::TicTacToe(int size)
+{
+    std::cout<<"Building vector with size: "<<size*size;
+    pegs = std::vector<std::string> {size*size, " "};
 }
 
 //private
@@ -138,7 +149,6 @@ void TicTacToe::set_winner(std::string winner)
     this->winner = winner;
 }
 
-//This is new.
 void TicTacToeManager::update_winner_count(std::string winner)
 {
     if(winner == "X")
